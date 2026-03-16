@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 모바일 대응 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Box personal portfolio Template</title>
+    <link rel="icon" href="img/fav.png" type="image/x-icon">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- main css -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- modernizr -->
+    <script src="js/modernizr.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- 추가된 CSS : 이미지 그리드 정렬 & 10px 간격 유지 -->
+    <style>
+        .custom-row {
+            /* col들의 좌우 padding을 통해 이미지 사이를 10px로 만들기 위해 row에 음수 마진 적용 */
+            margin-left: -5px;
+            margin-right: -5px;
+        }
+        .custom-row > [class*="col-"] {
+            /* 각 col에 좌우 5px padding 부여 → col 간 10px 간격 형성 */
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        /* .h-10, .h-30 등은 원래 있던 수직 간격이므로 그대로 두었습니다. */
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="pre-container">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- end Preloader -->
+
+    <div class="container-fluid">
+       <!-- box-header -->
+        <header class="box-header">
+            <div class="box-logo">
+                <a href="index.html"><img src="img/logo.png" width="80" alt="Logo"></a>
+            </div>
+            <!-- box-nav -->
+            <a class="box-primary-nav-trigger" href="#0">
+                <span class="box-menu-text">Menu</span><span class="box-menu-icon"></span>
+            </a>
+            <!-- box-primary-nav-trigger -->
+        </header>
+        <!-- end box-header -->
+        
+        <!-- nav -->
+        <nav>
+            <ul class="box-primary-nav">
+                <li class="box-label">About me</li>
+                <li><a href="index.html">Portfolio</a> <i class="ion-ios-circle-filled color"></i></li>
+                <li><a href="#0">About me</a></li>
+                <li><a href="#0">services</a></li>
+                <li><a href="#0">contact me</a></li>
+
+                <!--
+                <li><a href="index.html">Intro</a> <i class="ion-ios-circle-filled color"></i></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="services.html">services</a></li>
+                <li><a href="portfolio.html">portfolio</a></li>
+                <li><a href="contact.html">contact me</a></li>
+            -->
+
+                <li class="box-label">Follow me</li>
+                <li class="box-social"><a href="#0"><i class="ion-social-facebook"></i></a></li>
+                <li class="box-social"><a href="#0"><i class="ion-social-instagram-outline"></i></a></li>
+                <li class="box-social"><a href="#0"><i class="ion-social-twitter"></i></a></li>
+                <li class="box-social"><a href="#0"><i class="ion-social-dribbble"></i></a></li>
+            </ul>
+        </nav>
+        <!-- end nav -->
+    </div>
+    
+    <!-- top-bar -->
+    <div class="top-bar">
+        <h1>하남시청소년수련관 웹드라마</h1>
+        <p><a href="index.html">Home</a> / <a href="index.html">portfolio</a> / project</p>
+    </div>
+    <!-- end top-bar -->
+    
+    <!-- main-container -->
+    <div class="container main-container">
+        <!-- 첫 번째 이미지를 포함해 .row로 묶어서 좌우 패딩 동일 적용 -->
+        <div class="row custom-row">
+            <div class="col-md-12">
+                <img src="https://img1.wsimg.com/isteam/ip/7b1a09f4-9c69-4208-a039-b99a4e65bfa0/blob-9abafd9.png" alt="" class="img-responsive" style="width:100%;"/>
+                <div class="h-10"></div>
+            </div>
+        </div>
+        
+        
+
+        <!-- 아래부터 2장씩 한 줄 -->
+        <div class="row custom-row">
+            <div class="col-sm-6">
+                <img src="https://img1.wsimg.com/isteam/ip/7b1a09f4-9c69-4208-a039-b99a4e65bfa0/blob-4e3be83.png/:/rs=w:1440,h:1440" alt="" class="img-responsive" />
+                <div class="h-10"></div>
+            </div>
+            <div class="col-sm-6">
+                <img src="https://img1.wsimg.com/isteam/ip/7b1a09f4-9c69-4208-a039-b99a4e65bfa0/blob-a93adb6.png/:/rs=w:1440,h:1440" alt="" class="img-responsive" />
+                <div class="h-10"></div>
+            </div>
+            
+        </div>
+
+        <!-- 유튜브 영상 추가 (sm-12 사이즈) -->
+        <div class="row custom-row">
+            <div class="col-sm-12">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe width="1136" height="639" src="https://www.youtube.com/embed/sTI7Yq623qA" title="우리는 H.E.R.O." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="h-10"></div>
+            </div>
+        </div>
+
+        <!-- Project description (redesigned) -->
+        <div class="col-md-12 project-panel">
+            <div class="project-kicker">Project</div>
+            <h3 class="project-title text-uppercase">하남시청소년수련관 환경교육 청소년 웹드라마</h3>
+            <div class="project-subtitle">총괄 / 감독 / 촬영 / 편집</div>
+
+            <div class="meta-grid">
+                <div class="meta-box">
+                    <div class="k">Deliverables</div>
+                    <div class="v">웹드라마 본편 + 요약 버전</div>
+                    <div class="s">웹드라마 본편(자막 ver + 클린본) + 예고편형 요약 버전</div>
+                </div>
+
+                <div class="meta-box">
+                    <div class="k">Role &amp; Contribution</div>
+                    <div class="v">기여도 100%</div>
+                    <div class="s">총괄·기획 개발·현장 진행·연출·촬영·편집, 자막 및 영어 번역</div>
+                    <p></p>
+                    <div class="card-footer">
+                        <span class="pill">2인 제작</span>
+                    </div>
+                </div>
+
+                <div class="meta-box">
+                    <div class="k">Publication</div>
+                    <div class="v">하남시청소년수련관 상영</div>
+                    <div class="s">하남시청소년수련관 내 상영 및 제21회 서울국제환경영화제 출품</div>
+                </div>
+            </div>
+
+            <div class="project-block">
+                <div class="project-row">
+                    <div class="project-col">
+                        <div class="project-card">
+                            <h4>제작 배경</h4>
+                            <div class="card-body">
+                                <p>
+                                    <b>하남시청소년수련관</b> 환경 동아리 활동의 일환으로,
+                                    <b>청소년들이 직접 참여하는 환경 영상 콘텐츠</b> 제작 프로젝트로 기획되었습니다.
+
+                                    단순 교육 영상이 아니라 환경 문제를 웹드라마 형태의 서사 콘텐츠로 풀어내는 방향으로 제작을 진행했습니다.<br>
+                                    <br>
+                                    환경을 사랑하는 청소년들이 각자의 관심 분야를 중심으로 모인 비밀 조직이라는 설정을 바탕으로, 
+                                    환경 이슈를 카본·오션·제로·시티·에코·에너지·에어의 7개 영역으로 나누고 각 캐릭터가 자신의 분야를 
+                                    코드네임으로 사용하는 구조로 이야기를 구성했습니다.<br><br>
+
+                                    이 구조를 통해 환경 메시지를 딱딱하게 전달하기보다
+                                    대화와 상황 속에서 자연스럽게 드러나도록 설계했습니다.
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="pill">교육 콘텐츠</span>
+                                <span class="pill">청소년 참여형</span>
+                                <span class="pill">서사 구조</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-col">
+                        <div class="project-card">
+                            <h4>기획 의도</h4>
+                            <div class="card-body">
+                                <p class="callout">
+                                    <b>“환경 문제를 나열이 아닌 캐릭터와 관계가 만들어내는 서사 속에서 자연스럽게 전달한다.”</b><br>
+                                </p>
+                                <p class="muted">
+                                    환경 문제를 설명식으로 전달하는 교육 영상이 아니라,
+                                    청소년들이 직접 참여하는 드라마 형식을 통해 대화와 이야기 흐름 속에서 환경 이슈가 자연스럽게 드러나도록 구성했습니다.<br><br>
+
+                                    환경을 사랑하는 청소년들이 각자의 관심 분야를 중심으로 모인 비밀 조직이라는 설정 아래,
+                                    환경 문제를 카본, 오션, 제로, 시티, 에코, 에너지, 에어의 7개 영역으로 나누고
+                                    각 캐릭터가 자신의 분야에 대해 이야기하며 의견을 나누는 구조로 이야기를 설계했습니다.<br><br>
+
+                                    또한 캐릭터들 사이의 관계와 감정선, 서로를 좋아하거나 티격태격하는 요소들을 함께 담아
+                                    환경 이야기가 회의와 대화, 관계 속에서 자연스럽게 이어지는 드라마 흐름이 되도록 하는 것을 목표로 했습니다.
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="pill">서사 중심</span>
+                                <span class="pill">캐릭터 관계</span>
+                                <span class="pill">자연스러운 메시지</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-block">
+                <div class="project-row">
+                    <div class="project-col">
+                        <div class="project-card">
+                            <h4>제작 과정</h4>
+                            <div class="card-body">
+                                <ul class="steps">
+                                    <li class="step">
+                                        <div class="no">01</div>
+                                        <div class="txt"><b>기획 및 구성 정리</b> : 환경 교육 목적과 청소년 참여 활동의 성격을 고려해 드라마 형식의 기본 구조와 캐릭터 설정을 정리하고 촬영 흐름을 설계</div>
+                                    </li>
+                                    <li class="step">
+                                        <div class="no">02</div>
+                                        <div class="txt"><b>현장 준비 및 촬영 운영</b> : 청소년 출연 중심의 촬영 환경을 고려해 현장 상황에 맞게 진행을 조율하며 촬영 진행</div>
+                                    </li>
+                                    <li class="step">
+                                        <div class="no">03</div>
+                                        <div class="txt"><b>연출 및 현장 대응</b> : 촬영 시간이 제한적이고 대본 숙지가 충분하지 않은 상황을 고려, 장면을 순서대로 진행하며 캐릭터 상황과 감정선을 설명해 참여자들이 자연스럽게 연기할 수 있도록 조율</div>
+                                    </li>
+                                    <li class="step">
+                                        <div class="no">04</div>
+                                        <div class="txt"><b>촬영 및 음향 기록</b> : 현장 인력과 장비 제약을 고려해 메인 마이크와 개별 녹음을 병행하고, 촬영을 최대한 이어서 진행한 뒤 편집에서 장면을 재구성하는 방식으로 촬영 진행</div>
+                                    </li>
+                                    <li class="step">
+                                        <div class="no">05</div>
+                                        <div class="txt"><b>편집 및 후반 작업</b> : 촬영된 장면을 중심으로 서사를 재구성하고, 음향 정리와 믹싱 작업을 포함해 교육 메시지와 드라마 흐름이 자연스럽게 이어지도록 후반 작업 진행</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-col">
+                        <div class="project-card">
+                            <h4>커뮤니케이션 &amp; 피드백 운영</h4>
+                            <div class="card-body">
+                                <p>
+                                    <b>1. 참여자 이해 중심 진행</b><br>
+                                    전문 배우가 아닌 청소년들이 직접 출연하는 참여형 촬영 환경이었기 때문에 장면의 상황과 캐릭터 관계를 이해하는 과정이 중요했습니다. 
+                                    촬영 전 배경과 관계 설정을 설명하고 각 장면의 상황을 공유하며 연기 방향을 함께 조율했습니다.<br><br>
+
+                                    <b>2. 현장 분위기와 참여도 조율</b><br>
+                                    촬영 시간이 제한적이고 연습 시간이 충분하지 않은 상황이었기 때문에, 출연자들이 긴장하지 않고 자연스럽게 참여할 수 있도록 현장 분위기를 조율하는 데 신경 썼습니다.
+                                    연기 지시를 강하게 하기보다 상황을 설명하고 자연스러운 대화 흐름을 유도하는 방식으로 촬영을 진행해 청소년들이 이야기 속에 자연스럽게 참여할 수 있도록 했습니다.<br><br>
+
+                                    <b>3. 현장 상황 기반 촬영 운영</b><br>
+                                    촬영 환경과 참여자의 준비 상황을 고려해 장면을 가능한 한 순서대로 진행하며 흐름을 이해하기 쉽게 운영했습니다. 
+                                    촬영은 최대한 이어서 진행하고 이후 편집에서 장면을 재구성하는 방식으로 촬영 집중도를 유지했습니다.
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="pill">참여자 커뮤니케이션</span>
+                                <span class="pill">현장 진행력</span>
+                                <span class="pill">상황 기반 운영</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-block">
+                <div class="project-row">
+                    <div class="project-col project-col--full">
+                        <div class="project-card">
+                            <h4>연출 포인트</h4>
+                            <div class="card-body">
+                                <ul class="steps">
+                                    <li class="step">
+                                        <div class="no">01</div>
+                                        <div class="txt"><b>캐릭터 관계 중심 연출</b> : 각 캐릭터의 성격과 관계가 대사뿐 아니라 몸짓, 말투, 표정 등 미세한 표현에서도 드러나도록 연출해 청소년들 사이의 분위기와 관계성이 자연스럽게 전달되도록 구성</div>
+                                    </li>
+                                    <li class="step">
+                                        <div class="no">02</div>
+                                        <div class="txt"><b>대화 기반 장면 구성</b> : 청소년들이 환경 이슈에 대해 의견을 나누는 회의 형식의 대화 구조를 중심으로 장면을 설계해 이야기 흐름과 메시지가 자연스럽게 이어지도록 구성</div>
+                                    </li>
+                                    <li class="step">
+                                        <div class="no">03</div>
+                                        <div class="txt"><b>현실적 시각을 포함한 서사</b> : 환경 문제 해결에 대한 이상적인 이야기뿐 아니라 현실적인 한계와 회의적인 시각도 함께 담아 메시지가 지나치게 이상적으로만 보이지 않도록 서사 균형을 구성</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <span class="pill">캐릭터 관계</span>
+                                <span class="pill">대화 중심</span>
+                                <span class="pill">현실적 균형</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            
+        
+    </div>
+    <!-- end main-container -->
+
+    <!-- footer -->
+    <footer>
+        <div class="container-fluid">
+            <p class="copyright">Template Provide | © Box Portfolio 2016</p>
+            <p class="copyright">Made by | Lim Timothy</p>
+        </div>
+    </footer>
+    <!-- end footer -->
+    
+    <!-- back to top -->
+    <a href="#0" class="cd-top"><i class="ion-android-arrow-up"></i></a>
+    <!-- end back to top -->
+
+    <!-- jQuery -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <!--  plugins -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/animated-headline.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <!--  custom script -->
+    <script src="js/custom.js"></script>
+
+</body>
+</html>
