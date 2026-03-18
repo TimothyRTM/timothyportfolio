@@ -395,6 +395,58 @@
 
   <div class="project-block">
   <div class="project-row">
+    <div class="project-col project-col--full">
+      <div class="project-card">
+        <h4>
+          <a data-toggle="collapse" href="#stump-documents-collapse" aria-expanded="true" aria-controls="stump-documents-collapse" style="display:block; color:inherit; text-decoration:none;">
+            실제 제작 문서
+            <span id="stump-documents-toggle-label" class="pull-right" style="font-size:12px; color:#777;">&#9650; 접기</span>
+          </a>
+        </h4>
+        <div id="stump-documents-collapse" class="collapse in">
+        <div class="card-body">
+          <div class="row custom-row">
+            <div class="col-sm-6">
+              <img src="https://i.postimg.cc/4y5VN6Hz/sajeon.png" alt="사전 예상 시나리오와 제안서 일부" class="img-responsive" />
+              <div class="h-10"></div>
+              <p class="muted">&#9650; 사전 예상 시나리오, 제안서 일부</p>
+              <div class="h-20"></div>
+            </div>
+            <div class="col-sm-6">
+              <img src="https://i.postimg.cc/XqHqzQy5/moglog.png" alt="장비 리스트와 질문 리스트, 장소 리스트" class="img-responsive" />
+              <div class="h-10"></div>
+              <p class="muted">&#9650; 장비 리스트, 질문 리스트, 장소 리스트</p>
+              <div class="h-20"></div>
+            </div>
+            <div class="col-sm-6">
+              <img src="https://i.postimg.cc/MHvqvxvC/iljeong.png" alt="일정표와 준비표" class="img-responsive" />
+              <div class="h-10"></div>
+              <p class="muted">&#9650; 일정표 및 준비표</p>
+              <div class="h-20"></div>
+              <img src="https://i.postimg.cc/brk8Qg9P/gyeolsan.png" alt="제작비 결산안" class="img-responsive" style="max-width:42%; height:auto;" />
+              <div class="h-10"></div>
+              <p class="muted">&#9650; 제작비 결산안</p>
+            </div>
+            <div class="col-sm-6">
+              <img src="https://i.postimg.cc/JnFSYXz5/sahu.png" alt="편집구성안과 파일명 규칙" class="img-responsive" />
+              <div class="h-10"></div>
+              <p class="muted">&#9650; 편집구성안, 파일명 규칙</p>
+              <div class="h-20"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="pill">직접 제작 문서</span>
+          <span class="pill">프로듀서 역할</span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="project-block">
+  <div class="project-row">
 
     <!-- Communication -->
     <div class="project-col">
@@ -520,6 +572,20 @@
     <script src="js/isotope.pkgd.min.js"></script>
     <!--  custom script -->
     <script src="js/custom.js"></script>
+    <script>
+        $(function () {
+            var $documents = $('#stump-documents-collapse');
+            var $label = $('#stump-documents-toggle-label');
+
+            $documents.on('shown.bs.collapse', function () {
+                $label.html('&#9650; 접기');
+            });
+
+            $documents.on('hidden.bs.collapse', function () {
+                $label.html('&#9660; 펴기');
+            });
+        });
+    </script>
 
 </body>
 </html>
