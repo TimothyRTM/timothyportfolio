@@ -1,4 +1,15 @@
 $(function () {
+    var lens = document.getElementById('portfolio-lens');
+    if (lens && !lens.children.length) {
+        for (var i = 0; i < 8; i += 1) {
+            var tick = document.createElement('div');
+            var angle = (360 / 8) * i;
+            tick.className = 'portfolio-tick';
+            tick.style.transform = 'rotate(' + angle + 'deg)';
+            lens.appendChild(tick);
+        }
+    }
+
     // preloader
     $('#status').fadeOut(); // will first fade out the loading animation
     $('#preloader').delay(550).fadeOut('slow'); // will fade out the white DIV that covers the website.
@@ -10,6 +21,16 @@ $(function () {
     var $progress = $('#image-load-progress');
     var $bar = $progress.find('.image-load-progress__bar');
     var $images = $('.portfolio_item img');
+    var $portfolioSection = $('#portfolio-content');
+    var $portfolioLoader = $('#portfolio-loader');
+    var revealPortfolio = function () {
+        if ($portfolioSection.length) {
+            $portfolioSection.removeClass('is-loading').addClass('is-ready');
+        }
+        if ($portfolioLoader.length) {
+            $portfolioLoader.addClass('is-hidden');
+        }
+    };
     if ($images.length) {
         var total = $images.length;
         var loaded = 0;
@@ -19,11 +40,8 @@ $(function () {
             var pct = Math.round((loaded / total) * 100);
             $bar.css('width', pct + '%');
             if (loaded >= total) {
-                var elapsed = Date.now() - startTime;
-                var remaining = Math.max(0, 400 - elapsed);
-                setTimeout(function () {
-                    $progress.addClass('is-complete');
-                }, remaining);
+                $progress.addClass('is-complete');
+                revealPortfolio();
             }
         };
 
@@ -51,6 +69,7 @@ $(function () {
         update();
     } else {
         $progress.addClass('is-complete');
+        revealPortfolio();
     }
 });
 

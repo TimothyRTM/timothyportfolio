@@ -151,6 +151,187 @@ h5 {
     pointer-events: none;
 }
 
+.portfolio-stage {
+    position: relative;
+}
+
+.portfolio-loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 138px;
+    background: transparent;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.portfolio-loader__inner {
+    position: relative;
+}
+
+.portfolio-lens-loader {
+    position: relative;
+    width: 106px;
+    height: 106px;
+    opacity: 0.78;
+    filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.12));
+}
+
+.portfolio-lens {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    animation: portfolio-spin 10s linear infinite;
+}
+
+.portfolio-lens::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(0, 0, 0, 0.42);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(2px);
+}
+
+.portfolio-lens::after {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.portfolio-tick {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: #000;
+    top: 0;
+    left: 50%;
+    margin-left: -1px;
+    transform-origin: center 53px;
+}
+
+.portfolio-cross-h,
+.portfolio-cross-v {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: #000;
+    transform: translate(-50%, -50%);
+    animation: portfolio-focus 2s ease-in-out infinite;
+}
+
+.portfolio-cross-h {
+    width: 30px;
+    height: 2px;
+}
+
+.portfolio-cross-v {
+    width: 2px;
+    height: 30px;
+}
+
+.portfolio-focus-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+    animation: portfolio-box 2s ease-in-out infinite;
+}
+
+.portfolio-corner {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 2px solid #000;
+}
+
+.portfolio-corner.tl {
+    top: 0;
+    left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.portfolio-corner.tr {
+    top: 0;
+    right: 0;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.portfolio-corner.bl {
+    bottom: 0;
+    left: 0;
+    border-right: 0;
+    border-top: 0;
+}
+
+.portfolio-corner.br {
+    right: 0;
+    bottom: 0;
+    border-left: 0;
+    border-top: 0;
+}
+
+.portfolio-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.portfolio-inner.is-loading {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.portfolio-inner.is-ready {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.35s ease;
+}
+
+@keyframes portfolio-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes portfolio-focus {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1.12);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes portfolio-box {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1.25);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
 .pre-container {
     position: absolute;
     left: 50%;

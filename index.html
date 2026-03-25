@@ -114,8 +114,25 @@
     </div>
 
 
+    <div class="portfolio-stage">
+        <div id="portfolio-loader" class="portfolio-loader" aria-hidden="true">
+            <div class="portfolio-loader__inner">
+                <div class="portfolio-lens-loader" id="portfolio-lens-loader">
+                    <div class="portfolio-lens" id="portfolio-lens"></div>
+                    <div class="portfolio-cross-h"></div>
+                    <div class="portfolio-cross-v"></div>
+                    <div class="portfolio-focus-box">
+                        <span class="portfolio-corner tl"></span>
+                        <span class="portfolio-corner tr"></span>
+                        <span class="portfolio-corner bl"></span>
+                        <span class="portfolio-corner br"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <!-- main container -->
-    <div class="main-container portfolio-inner clearfix">
+    <div id="portfolio-content" class="main-container portfolio-inner clearfix is-loading">
         <!-- portfolio div -->
         <div class="portfolio-div">
             <div class="portfolio">
@@ -872,6 +889,7 @@
         <!-- end portfolio div -->
     </div>
     <!-- end main container -->
+    </div>
 
 
    
