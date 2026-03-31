@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About | Lim Timothy</title>
+    <link rel="icon" href="img/fav.png" type="image/x-icon">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/modernizr.js"></script>
+    <style>
+        :root {
+            --text: #ffffff;
+            --muted: rgba(255, 255, 255, 0.9);
+            --subtle: rgba(255, 255, 255, 0.74);
+            --line: rgba(255, 255, 255, 0.14);
+            --accent: #79ffd3;
+            --accent-warm: #f8d27a;
+            --glow: radial-gradient(circle at top, rgba(121, 255, 211, 0.22), transparent 42%);
+            --glow-warm: radial-gradient(circle at bottom right, rgba(248, 210, 122, 0.18), transparent 32%);
+            --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+            --max: 1240px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 20% 0%, rgba(43, 72, 255, 0.16), transparent 28%),
+                radial-gradient(circle at 80% 18%, rgba(121, 255, 211, 0.12), transparent 24%),
+                linear-gradient(180deg, #040404 0%, #080808 32%, #020202 100%);
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::before {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 120px 120px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 85%);
+        }
+
+        body::after {
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.42) 100%);
+        }
+
+        #preloader,
+        footer .copyright {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container-fluid {
+            position: relative;
+            z-index: 3;
+        }
+
+        .box-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 40;
+        }
+
+        nav { z-index: 45; }
+
+
+        .about-shell {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-inner {
+            width: min(calc(100% - 48px), var(--max));
+            margin: 0 auto;
+        }
+
+        .physics-hero {
+            position: relative;
+            height: 100vh;
+            min-height: 620px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 20% 18%, rgba(121, 255, 211, 0.08), transparent 24%),
+                radial-gradient(circle at 80% 20%, rgba(248, 210, 122, 0.07), transparent 22%),
+                #000;
+        }
+
+        .physics-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            touch-action: none;
+            cursor: default;
+        }
+
+        .physics-overlay,
+        .physics-controls,
+        .physics-scroll {
+            position: absolute;
+            z-index: 3;
+        }
+
+        .physics-overlay {
+            left: 28px;
+            top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: min(460px, calc(100vw - 120px));
+            pointer-events: none;
+        }
+
+        .physics-kicker,
+        .section-kicker,
+        .stat-label,
+        .project-role,
+        .skill-label,
+        .list-label {
+            color: rgba(255, 255, 255, 0.76);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 11px;
+        }
+
+        .physics-title {
+            margin: 0;
+            font-size: clamp(18px, 2.2vw, 28px);
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .physics-caption {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.52);
+        }
+
+        .physics-controls {
+            top: 96px;
+            right: 18px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .replay-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.28);
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.9);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transform: scale(1);
+            transition:
+                opacity .25s ease,
+                transform .25s ease,
+                background .2s ease,
+                border-color .2s ease;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 0;
+        }
+
+        .replay-btn svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .replay-btn:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.42);
+        }
+
+        .replay-btn:active {
+            transform: scale(0.96);
+        }
+
+        .physics-scroll {
+            left: 50%;
+            bottom: 34px;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            pointer-events: none;
+            z-index: 4;
+            white-space: nowrap;
+        }
+
+        .physics-scroll::after {
+            content: "";
+            width: 1px;
+            height: 52px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.68), transparent);
+        }
+
+        .section {
+            position: relative;
+            padding: 9vw 0;
+        }
+
+        .section-head {
+            max-width: 860px;
+            margin-bottom: 44px;
+        }
+
+        .section-head h2 {
+            margin: 14px 0 0;
+            font-size: clamp(38px, 6vw, 88px);
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            line-height: 0.95;
+            color: #fff;
+        }
+
+        .section-head p {
+            margin: 18px 0 0;
+            max-width: 760px;
+            font-size: clamp(16px, 2vw, 21px);
+            line-height: 1.7;
+            color: var(--subtle);
+        }
+
+        .glass-card {
+            position: relative;
+            padding: 28px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.045));
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(121, 255, 211, 0.14), transparent 28%);
+            pointer-events: none;
+        }
+
+        .stats-grid,
+        .projects-grid,
+        .skill-grid,
+        .highlights-grid,
+        .contact-grid,
+        .mini-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .stat-number,
+        .project-title-compact,
+        .mini-title,
+        .contact-item strong,
+        .contact-item a,
+        .highlight-card strong,
+        .contact-panel h3 {
+            color: #fff;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: clamp(34px, 5vw, 64px);
+            line-height: 1;
+            letter-spacing: -0.05em;
+        }
+
+        .stat-copy,
+        .project-copy,
+        .mini-copy,
+        .contact-panel p,
+        .highlight-card p {
+            margin: 16px 0 0;
+            color: var(--muted);
+            line-height: 1.75;
+            font-size: 15px;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1.1fr 0.9fr 0.9fr;
+        }
+
+        .project-card { min-height: 320px; }
+
+        .project-title-compact,
+        .mini-title,
+        .contact-panel h3 {
+            margin: 14px 0 0;
+            font-size: clamp(26px, 3vw, 44px);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .project-tags,
+        .mini-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .tag {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: #fff;
+            letter-spacing: 0.04em;
+        }
+
+        .skill-grid {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        .skill-card {
+            text-align: center;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-ring {
+            --value: 85;
+            width: 132px;
+            height: 132px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: conic-gradient(var(--accent) calc(var(--value) * 1%), rgba(255, 255, 255, 0.1) 0);
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .skill-ring.warm {
+            background: conic-gradient(var(--accent-warm) calc(var(--value) * 1%), rgba(255, 255, 255, 0.1) 0);
+        }
+
+        .skill-ring::before {
+            content: attr(data-value);
+            position: absolute;
+            inset: 12px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(6, 6, 6, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .skill-name {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .skill-desc {
+            margin-top: 10px;
+            color: var(--subtle);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .mini-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .mini-card { min-height: 250px; }
+
+        .highlights-grid,
+        .contact-grid {
+            grid-template-columns: 1.1fr 0.9fr;
+        }
+
+        .highlight-card strong {
+            display: block;
+            margin-top: 28px;
+            font-size: 72px;
+            line-height: 1;
+            letter-spacing: -0.06em;
+        }
+
+        .highlight-band {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-band::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+            transform: translateX(-100%);
+            animation: sweep 7s linear infinite;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item span {
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 11px;
+        }
+
+        .contact-item a {
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .footer-note {
+            padding: 40px 24px 80px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translate3d(0, 96px, 0) scale(0.96);
+            filter: blur(14px);
+            transition:
+                opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform, filter;
+        }
+
+        .section-head.reveal {
+            transform: translate3d(0, 72px, 0) scale(0.985);
+        }
+
+        .glass-card.reveal {
+            transform: translate3d(0, 104px, 0) scale(0.94) rotateX(8deg);
+            transform-origin: 50% 100%;
+            box-shadow: 0 40px 90px rgba(0, 0, 0, 0.16);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: translate3d(0, 0, 0) scale(1) rotateX(0deg);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        .parallax {
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.15s linear;
+            will-change: transform;
+        }
+
+        footer {
+            position: relative;
+            z-index: 2;
+            background: transparent;
+        }
+
+        @keyframes sweep {
+            to { transform: translateX(100%); }
+        }
+
+        @keyframes keywordFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes keywordSweep {
+            0%, 18% { transform: translateX(-130%); }
+            42%, 100% { transform: translateX(130%); }
+        }
+
+        @media (max-width: 1100px) {
+            .projects-grid,
+            .skill-grid,
+            .highlights-grid,
+            .contact-grid,
+            .stats-grid,
+            .mini-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 780px) {
+            .section-inner { width: min(calc(100% - 28px), var(--max)); }
+            .physics-hero { min-height: 540px; }
+            .showcase-card,
+            .glass-card { padding: 22px; border-radius: 24px; }
+            .contact-item { flex-direction: column; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal,
+            .reveal.is-visible,
+            .parallax,
+            .highlight-band::before,
+            .keyword-chip,
+            .keyword-chip::before {
+                transition: none;
+                animation: none;
+                transform: none;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <div class="pre-container">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <header class="box-header">
+            <div class="box-logo">
+                <a href="index.html"><img src="img/logo.png" width="80" alt="Logo"></a>
+            </div>
+            <a class="box-primary-nav-trigger" href="#0">
+                <span class="box-menu-text">Menu</span><span class="box-menu-icon"></span>
+            </a>
+        </header>
+
+        <nav>
+            <ul class="box-primary-nav">
+                <li class="box-label">About me</li>
+                <li><a href="index.html">Intro</a></li>
+                <li><a href="about.html">About me</a> <i class="ion-ios-circle-filled color"></i></li>
+                <li><a href="services.html">services</a></li>
+                <li><a href="portfolio.html">portfolio</a></li>
+                <li><a href="contact.html">contact me</a></li>
+                <li class="box-label">Follow me</li>
+                <li class="box-social"><a href="#0"><i class="ion-social-facebook"></i></a></li>
+                <li class="box-social"><a href="#0"><i class="ion-social-instagram-outline"></i></a></li>
+                <li class="box-social"><a href="#0"><i class="ion-social-twitter"></i></a></li>
+                <li class="box-social"><a href="#0"><i class="ion-social-dribbble"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="about-shell">
+        <section class="physics-hero" id="physicsHero">
+            <canvas id="wordWorld" class="physics-canvas"></canvas>
+            <div class="physics-controls">
+                <button id="replayBtn" class="replay-btn" aria-label="Replay">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20 11a8 8 0 1 0-2.34 5.66"></path>
+                        <path d="M20 4v7h-7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="physics-scroll">Scroll</div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-head reveal">
+                    <span class="section-kicker">Snapshot</span>
+                    <h2>핵심만 바로 보이게.</h2>
+                    <p>설명보다 먼저 보이는 숫자, 성과, 현재 포지션.</p>
+                </div>
+                <div class="stats-grid">
+                    <article class="glass-card reveal">
+                        <strong class="stat-number">4.36</strong>
+                        <span class="stat-label">GPA / 4.5</span>
+                        <p class="stat-copy">가천대학교 미디어커뮤니케이션학과<br>복수전공: 미디어 컴퓨터 연계전공</p>
+                    </article>
+                    <article class="glass-card reveal delay-1">
+                        <strong class="stat-number">1 / 109</strong>
+                        <span class="stat-label">Graduate Rank</span>
+                        <p class="stat-copy">Cum Laude 성적우수상<br>학과 수석 졸업</p>
+                    </article>
+                    <article class="glass-card reveal delay-2">
+                        <strong class="stat-number">2Y 3M</strong>
+                        <span class="stat-label">Career</span>
+                        <p class="stat-copy">2024.01 ~ 현재<br>(주)오투버스 재직 중</p>
+                    </article>
+                    <article class="glass-card reveal delay-3">
+                        <strong class="stat-number">IOC</strong>
+                        <span class="stat-label">Achievement</span>
+                        <p class="stat-copy">2024 K-OVEP 영상<br>IOC 공식 페이지 게시</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-head reveal">
+                    <span class="section-kicker">Selected Work</span>
+                    <h2>대표 프로젝트.</h2>
+                    <p>길게 설명하지 않아도 되는, 바로 이해되는 프로젝트들.</p>
+                </div>
+                <div class="projects-grid">
+                    <article class="glass-card project-card reveal">
+                        <span class="project-role">Public Institution</span>
+                        <h3 class="project-title-compact">국민체육진흥공단 K-OVEP 2024</h3>
+                        <p class="project-copy">홍보·결과보고 영상 1인 총괄 제작. 기획 / 연출 / 촬영 / 편집 / 번역. IOC 공식 페이지 업로드.</p>
+                        <div class="project-tags">
+                            <span class="tag">1인 제작</span>
+                            <span class="tag">공식 업로드</span>
+                            <span class="tag">홍보+결과보고</span>
+                        </div>
+                    </article>
+                    <article class="glass-card project-card reveal delay-1">
+                        <span class="project-role">Anniversary</span>
+                        <h3 class="project-title-compact">국민체육진흥공단 K-OVEP 2025</h3>
+                        <p class="project-copy">10주년 영상 총괄. 선수 인터뷰 촬영 포함. 2024에 이어 연속 제작 맡은 프로젝트.</p>
+                        <div class="project-tags">
+                            <span class="tag">10주년</span>
+                            <span class="tag">연속 제작</span>
+                            <span class="tag">한/영 버전</span>
+                        </div>
+                    </article>
+                    <article class="glass-card project-card reveal delay-2">
+                        <span class="project-role">Web Entertainment</span>
+                        <h3 class="project-title-compact">우리도 제주 한 번쯤은</h3>
+                        <p class="project-copy">하나금융 청소년그루터기재단 3부작 웹예능. 기획 / 작가 / 연출 / 촬영 / 음향 / 편집 총괄.</p>
+                        <div class="project-tags">
+                            <span class="tag">3부작</span>
+                            <span class="tag">2인 제작</span>
+                            <span class="tag">신규 포맷 제안</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-head reveal">
+                    <span class="section-kicker">Skill Index</span>
+                    <h2>직관적인 스킬 맵.</h2>
+                    <p>주요 툴과 실무 강점을 빠르게 읽히도록 원형 그래프로 정리했습니다.</p>
+                </div>
+                <div class="skill-grid">
+                    <article class="glass-card skill-card reveal">
+                        <div class="skill-ring" style="--value:95;" data-value="95"></div>
+                        <span class="skill-label">Edit</span>
+                        <div class="skill-name">Premiere Pro</div>
+                        <div class="skill-desc">메인 편집 툴</div>
+                    </article>
+                    <article class="glass-card skill-card reveal delay-1">
+                        <div class="skill-ring warm" style="--value:88;" data-value="88"></div>
+                        <span class="skill-label">Motion</span>
+                        <div class="skill-name">After Effects</div>
+                        <div class="skill-desc">모션 그래픽</div>
+                    </article>
+                    <article class="glass-card skill-card reveal delay-2">
+                        <div class="skill-ring" style="--value:86;" data-value="86"></div>
+                        <span class="skill-label">Design</span>
+                        <div class="skill-name">Photoshop</div>
+                        <div class="skill-desc">썸네일 / 그래픽</div>
+                    </article>
+                    <article class="glass-card skill-card reveal">
+                        <div class="skill-ring warm" style="--value:90;" data-value="90"></div>
+                        <span class="skill-label">Camera</span>
+                        <div class="skill-name">DSLR / ENG</div>
+                        <div class="skill-desc">현장 촬영 운영</div>
+                    </article>
+                    <article class="glass-card skill-card reveal delay-1">
+                        <div class="skill-ring" style="--value:92;" data-value="92"></div>
+                        <span class="skill-label">Planning</span>
+                        <div class="skill-name">기획력</div>
+                        <div class="skill-desc">구성 / 제안 / 콘티</div>
+                    </article>
+                    <article class="glass-card skill-card reveal delay-2">
+                        <div class="skill-ring warm" style="--value:84;" data-value="84"></div>
+                        <span class="skill-label">Office</span>
+                        <div class="skill-name">MacOS / Excel</div>
+                        <div class="skill-desc">실무 운영 기반</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner">
+                <div class="section-head reveal">
+                    <span class="section-kicker">Key Point</span>
+                    <h2>어필 포인트.</h2>
+                    <p>문장보다 짧고 강하게 정리한 핵심.</p>
+                </div>
+                <div class="mini-grid">
+                    <article class="glass-card mini-card reveal">
+                        <span class="list-label">01</span>
+                        <h3 class="mini-title">공공기관 콘텐츠</h3>
+                        <p class="mini-copy">결과보고와 홍보를 동시에 만족시키는 구조 설계. 공식 기관 커뮤니케이션 경험.</p>
+                        <div class="mini-tags">
+                            <span class="tag">국민체육진흥공단</span>
+                            <span class="tag">KOCCA 선정작 참여</span>
+                        </div>
+                    </article>
+                    <article class="glass-card mini-card reveal delay-1">
+                        <span class="list-label">02</span>
+                        <h3 class="mini-title">소규모 제작 강점</h3>
+                        <p class="mini-copy">1인, 2인 제작 환경에서 기획부터 현장, 편집, 디자인, 마감까지 완결 가능.</p>
+                        <div class="mini-tags">
+                            <span class="tag">A to Z</span>
+                            <span class="tag">빠른 대응</span>
+                        </div>
+                    </article>
+                    <article class="glass-card mini-card reveal delay-2">
+                        <span class="list-label">03</span>
+                        <h3 class="mini-title">영상 밖의 실무</h3>
+                        <p class="mini-copy">브랜딩, 로고 디자인, 홈페이지 제작, 지원사업 제안서 작성 참여 경험 보유.</p>
+                        <div class="mini-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Web</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner highlights-grid">
+                <article class="glass-card highlight-card highlight-band reveal">
+                    <span class="list-label">Summary</span>
+                    <h3>가천대학교 수석 졸업. 오투버스 재직 중. K-OVEP 영상 IOC 게시. 공공기관, 웹예능, 기업 홍보, 해외 채널 운영 경험.</h3>
+                    <p>영상을 예쁘게 만드는 것보다, 왜 이 영상이 필요한지 먼저 정리하고 그 목적에 맞는 구조를 만드는 쪽에 강합니다.</p>
+                    <strong>Core fit</strong>
+                </article>
+                <article class="glass-card highlight-card reveal delay-1">
+                    <span class="list-label">License & Award</span>
+                    <h3>컴퓨터활용능력 1급<br>GTQ 1급<br>TOEIC 885</h3>
+                    <p>2025 Cum Laude 성적우수상, 2023 바른단위 유튜브 숏츠 공모전 우수상, 고교 홍보영상 공모전 1위 2회.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner contact-grid">
+                <article class="glass-card contact-panel reveal">
+                    <span class="list-label">Direct</span>
+                    <h3>임디모데</h3>
+                    <p>미디어커뮤니케이션학과 / 미디어 컴퓨터 연계전공 / 영상 제작 전 과정 총괄</p>
+                </article>
+                <article class="glass-card contact-panel reveal delay-1">
+                    <span class="list-label">Contact</span>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <span>Email</span>
+                            <a href="mailto:timothy8723@gmail.com">timothy8723@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span>Current</span>
+                            <strong>(주)오투버스</strong>
+                        </div>
+                        <div class="contact-item">
+                            <span>Focus</span>
+                            <strong>기획 / 촬영 / 편집 / 브랜딩</strong>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-note">Made by Lim Timothy</div>
+    </footer>
+
+    <a href="#0" class="cd-top"><i class="ion-android-arrow-up"></i></a>
+
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/animated-headline.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js"></script>
+    <script>
+        (function () {
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
+
+            var resetToTop = function () {
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            };
+
+            resetToTop();
+            window.addEventListener('load', resetToTop);
+            window.addEventListener('pageshow', resetToTop);
+        }());
+    </script>
+
+    <script>
+        (function () {
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var reveals = document.querySelectorAll('.reveal');
+            var parallaxNodes = document.querySelectorAll('.parallax');
+
+            if (!reducedMotion && 'IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.16,
+                    rootMargin: '0px 0px -12% 0px'
+                });
+
+                reveals.forEach(function (node) {
+                    if (!node.classList.contains('is-visible')) {
+                        observer.observe(node);
+                    }
+                });
+            } else {
+                reveals.forEach(function (node) {
+                    node.classList.add('is-visible');
+                });
+            }
+
+            if (!reducedMotion && parallaxNodes.length) {
+                var updateParallax = function () {
+                    var scrollY = window.pageYOffset || window.scrollY || 0;
+                    parallaxNodes.forEach(function (node) {
+                        var speed = parseFloat(node.getAttribute('data-speed') || '0.08');
+                        var offset = scrollY * speed;
+                        node.style.transform = 'translate3d(0, ' + offset + 'px, 0)';
+                    });
+                };
+
+                updateParallax();
+                window.addEventListener('scroll', updateParallax, { passive: true });
+            }
+        }());
+
+        (function () {
+            if (typeof Matter === 'undefined') {
+                return;
+            }
+
+            var Engine = Matter.Engine;
+            var Render = Matter.Render;
+            var Runner = Matter.Runner;
+            var World = Matter.World;
+            var Bodies = Matter.Bodies;
+            var Body = Matter.Body;
+            var Events = Matter.Events;
+            var Sleeping = Matter.Sleeping;
+
+            var hero = document.getElementById('physicsHero');
+            var canvas = document.getElementById('wordWorld');
+            var replayBtn = document.getElementById('replayBtn');
+            if (!hero || !canvas || !replayBtn) {
+                return;
+            }
+
+            var W = hero.clientWidth;
+            var H = hero.clientHeight;
+
+            var KEYWORDS = [
+                'EDITING',
+                'PLANNING',
+                'DIRECTING',
+                'SHOOTING',
+                'PRODUCING',
+                'BRANDING',
+                'K-OVEP'
+                
+            ];
+
+            var HERO_SET = new Set(KEYWORDS);
+
+            var WORDS = [
+                'EDITING','PLANNING','DIRECTING','SHOOTING','PRODUCING','BRANDING','K-OVEP','PUBLIC PROJECT','OFFICIAL CONTENT','REPORT FILM','BRAND FILM','PROMO','WEB SHOW','WEBDRAMA','DOCUMENTARY','SHORTFORM','REELS','YOUTUBE','CONTENT','FORMAT','SERIES','CAMPAIGN','CHANNEL','A TO Z','ONE MAN CREW','SMALL TEAM','TOTAL PRODUCTION','END TO END','FULL PROCESS','EXECUTION','DELIVERY','CONCEPT','STRATEGY','PROPOSAL','PITCH','PLANNING POWER','RESEARCH','COPY','SCRIPT','STORY','STRUCTURE','NARRATIVE','FLOW','PACE','RHYTHM','MESSAGE','PURPOSE','IMPACT','CLARITY','DIRECTION','FIELDWORK','ON SET','SETUP','COORDINATION','CASTING','INTERVIEW','AROLL','BROLL','CAMERA','MULTICAM','SOUND','MIXING','SUBTITLE','CAPTION','TRANSLATION','BILINGUAL','ENGLISH VERSION','GRAPHICS','ANIMATION','MOGRT','THUMBNAIL','PHOTOSHOP','PREMIERE PRO','AFTER EFFECTS','VISUAL','LOOK','FRAME','COMPOSITION','DETAIL','CONSISTENCY','TONE AND MANNER','DATA MANAGEMENT','WORKFLOW','TIMELINE','DEADLINE','FAST RESPONSE','PROBLEM SOLVING','LOGO','WEB','HOMEPAGE','DESIGN','OFFICE','EXCEL','MACOS','PUBLIC COMMUNICATION','EDUCATIONAL CONTENT','YOUTH CONTENT','TRAVEL VARIETY','CORPORATE PROMO','DOCUMENTATION','RESULT REPORT','OFFICIAL UPLOAD','IOC','PORTFOLIO FILM','SHOWREEL','OLYMPIC','KSPO','PRESS PHOTO','PHOTO','AI','VIBE CODING','PREMIERE','ILLUSTRATOR','WORD','POWERPOINT','SHORTCUT','SONY','CANON','ENG CAMERA','CAMCORDER','GIMBAL','DRONE','MACBOOK','MARKETING','JOURNALISM','ADVERTISING','MEDIA','MAJOR','BUDGET','SCHEDULING','DOCUMENT','LIVE COVERAGE','PASSION','CHANNEL OPERATION','ADOBE'
+            ];
+
+            var availableWords = [];
+            var boundaries = [];
+            var wordBodies = [];
+            var spawnStopped = false;
+            var spawnTimer = null;
+            var finishCheckTimer = null;
+            var interactionEnabled = false;
+            var interactionTimer = null;
+
+            var engine = Engine.create({ enableSleeping: true });
+            engine.gravity.x = 0;
+            engine.gravity.y = 0.5;
+
+            var render = Render.create({
+                canvas: canvas,
+                engine: engine,
+                options: {
+                    width: W,
+                    height: H,
+                    wireframes: false,
+                    background: '#000',
+                    pixelRatio: Math.min(window.devicePixelRatio || 1, 2)
+                }
+            });
+
+            Render.run(render);
+            var runner = Runner.create();
+            Runner.run(runner, engine);
+
+            var MAX_WORDS = WORDS.length;
+            var INITIAL_SPAWN = Math.min(14, MAX_WORDS);
+            var SPAWN_INTERVAL = 92;
+            var CLICK_BURST = 16;
+            var FLOOR_HEIGHT = 56;
+            var WALL_WIDTH = 120;
+
+            var pointer = {
+                x: 0,
+                y: 0,
+                px: 0,
+                py: 0,
+                vx: 0,
+                vy: 0,
+                active: false,
+                down: false
+            };
+
+            var INTERACTION_DELAY_MS = 1800;
+            var INTERACTION_RADIUS = 180;
+            var INTERACTION_FORCE = 0.00105;
+            var DRAG_FORCE = 0.00062;
+            var ANGULAR_KICK = 0.028;
+            var SPEED_BOOST = 1.35;
+
+            function pullUniqueWord() {
+                if (availableWords.length === 0) return null;
+                var index = Math.floor(Math.random() * availableWords.length);
+                return availableWords.splice(index, 1)[0];
+            }
+
+            function removeWordFromPool(word) {
+                var idx = availableWords.indexOf(word);
+                if (idx >= 0) availableWords.splice(idx, 1);
+            }
+
+            function rand(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            function clamp(v, min, max) {
+                return Math.max(min, Math.min(max, v));
+            }
+
+            function getScreenScale() {
+                var baseW = 1440;
+                var baseH = 900;
+                var scale = Math.min(W / baseW, H / baseH);
+                return clamp(scale, 0.65, 1.45);
+            }
+
+            function scaledRand(min, max) {
+                var s = getScreenScale();
+                return rand(min * s, max * s);
+            }
+
+            function getFontSize(text) {
+                if (text === 'EDITING') return scaledRand(92, 148);
+                if (text === 'PLANNING' || text === 'DIRECTING' || text === 'SHOOTING') return scaledRand(72, 118);
+                if (text === 'PRODUCING' || text === 'BRANDING' || text === 'K-OVEP') return scaledRand(60, 102);
+
+                var r = Math.random();
+                var size;
+                if (r < 0.26) size = scaledRand(10, 14);
+                else if (r < 0.52) size = scaledRand(15, 22);
+                else if (r < 0.74) size = scaledRand(23, 33);
+                else if (r < 0.89) size = scaledRand(34, 48);
+                else if (r < 0.97) size = scaledRand(49, 68);
+                else size = scaledRand(72, 94);
+
+                if (text.length >= 16) size *= 0.9;
+                else if (text.length <= 5) size *= 1.08;
+
+                return size;
+            }
+
+            function measureText(text, fontSize) {
+                var ctx = document.createElement('canvas').getContext('2d');
+                ctx.font = '700 ' + fontSize + 'px Helvetica Neue, Arial, sans-serif';
+                return {
+                    width: ctx.measureText(text).width,
+                    height: fontSize * 1.02
+                };
+            }
+
+            function makeBoundaries() {
+                if (boundaries.length) {
+                    World.remove(engine.world, boundaries);
+                }
+
+                var floor = Bodies.rectangle(
+                    W / 2,
+                    H + FLOOR_HEIGHT / 2 - 18,
+                    W + WALL_WIDTH * 2,
+                    FLOOR_HEIGHT,
+                    {
+                        isStatic: true,
+                        render: { fillStyle: '#000' },
+                        friction: 0.985,
+                        restitution: 0
+                    }
+                );
+
+                var leftWall = Bodies.rectangle(-WALL_WIDTH / 2, H / 2, WALL_WIDTH, H * 2, {
+                    isStatic: true,
+                    render: { fillStyle: '#000' }
+                });
+
+                var rightWall = Bodies.rectangle(W + WALL_WIDTH / 2, H / 2, WALL_WIDTH, H * 2, {
+                    isStatic: true,
+                    render: { fillStyle: '#000' }
+                });
+
+                boundaries = [floor, leftWall, rightWall];
+                World.add(engine.world, boundaries);
+            }
+
+            function addWordBody(text, x, y, strongerSpread) {
+                var fontSize = getFontSize(text);
+                var measured = measureText(text, fontSize);
+                var screenScale = getScreenScale();
+                var paddingX = (HERO_SET.has(text) ? 10 : 4) * screenScale;
+                var paddingY = (HERO_SET.has(text) ? 6 : 2) * screenScale;
+                var bw = measured.width + paddingX;
+                var bh = measured.height + paddingY;
+                var px = x != null ? x : rand(bw / 2 + 4, W - bw / 2 - 4);
+                var py = y != null ? y : rand(-520, -80);
+
+                var body = Bodies.rectangle(px, py, bw, bh, {
+                    restitution: 0,
+                    friction: 0.985,
+                    frictionStatic: 1.35,
+                    frictionAir: 0.008,
+                    density: HERO_SET.has(text) ? 0.003 : 0.00155,
+                    sleepThreshold: 20,
+                    chamfer: { radius: 1 },
+                    render: {
+                        fillStyle: '#000',
+                        strokeStyle: '#000',
+                        lineWidth: 0
+                    }
+                });
+
+                body.wordLabel = text;
+                body.wordFontSize = fontSize;
+                body.wordColor = '#fff';
+
+                Body.setVelocity(body, {
+                    x: strongerSpread ? rand(-0.9, 0.9) : rand(-0.1, 0.1),
+                    y: rand(0.14, 0.42)
+                });
+                Body.setAngularVelocity(body, rand(-0.009, 0.009));
+
+                wordBodies.push(body);
+                World.add(engine.world, body);
+                return body;
+            }
+
+            function createWordBody(x, y, strongerSpread) {
+                if (wordBodies.length >= MAX_WORDS) return null;
+                var text = pullUniqueWord();
+                if (!text) {
+                    spawnStopped = true;
+                    return null;
+                }
+                return addWordBody(text, x, y, strongerSpread);
+            }
+
+            function createHeroWords() {
+                var count = KEYWORDS.length;
+                for (var i = 0; i < count; i++) {
+                    var word = KEYWORDS[i];
+                    var spreadX = ((i + 0.5) / count) * W + rand(-W * 0.09, W * 0.09);
+                    addWordBody(word, clamp(spreadX, 50, W - 50), rand(-440, -120), true);
+                }
+            }
+
+            function burst(x) {
+                if (spawnStopped) return;
+                var count = Math.min(CLICK_BURST, availableWords.length);
+                for (var i = 0; i < count; i++) {
+                    createWordBody(clamp(x + rand(-120, 120), 20, W - 20), rand(-220, -10), true);
+                }
+                if (availableWords.length === 0) {
+                    spawnStopped = true;
+                }
+            }
+
+            function allWordsSleeping() {
+                if (wordBodies.length === 0) return false;
+                return wordBodies.every(function (body) {
+                    return body.isSleeping || body.speed < 0.05;
+                });
+            }
+
+            function startFinishCheck() {
+                if (finishCheckTimer) clearInterval(finishCheckTimer);
+                finishCheckTimer = setInterval(function () {
+                    if (!spawnStopped) return;
+                    if (allWordsSleeping()) {
+                        clearInterval(finishCheckTimer);
+                        finishCheckTimer = null;
+                    }
+                }, 300);
+            }
+
+            function startSpawnLoop() {
+                if (spawnTimer) clearInterval(spawnTimer);
+                spawnTimer = setInterval(function () {
+                    if (spawnStopped) {
+                        clearInterval(spawnTimer);
+                        spawnTimer = null;
+                        return;
+                    }
+
+                    var fill = wordBodies.length / MAX_WORDS;
+                    var count = 1;
+                    if (fill < 0.18) count = 3;
+                    else if (fill < 0.45) count = 2;
+                    else if (fill < 0.78) count = 1;
+                    else count = 1;
+
+                    for (var i = 0; i < count; i++) {
+                        if (availableWords.length === 0) {
+                            spawnStopped = true;
+                            break;
+                        }
+                        createWordBody();
+                    }
+
+                    if (availableWords.length === 0 || wordBodies.length >= MAX_WORDS) {
+                        spawnStopped = true;
+                    }
+                }, SPAWN_INTERVAL);
+            }
+
+            function scheduleInteractionEnable() {
+                interactionEnabled = false;
+                if (interactionTimer) clearTimeout(interactionTimer);
+                interactionTimer = setTimeout(function () {
+                    interactionEnabled = true;
+                }, INTERACTION_DELAY_MS);
+            }
+
+            function applyPointerForce() {
+                if (!interactionEnabled || !pointer.active) return;
+                var moveMag = Math.hypot(pointer.vx, pointer.vy) * SPEED_BOOST;
+                var radius = pointer.down ? INTERACTION_RADIUS * 1.18 : INTERACTION_RADIUS;
+
+                for (var i = 0; i < wordBodies.length; i++) {
+                    var body = wordBodies[i];
+                    var dx = body.position.x - pointer.x;
+                    var dy = body.position.y - pointer.y;
+                    var dist = Math.hypot(dx, dy);
+                    if (dist > radius || dist === 0) continue;
+
+                    var t = 1 - dist / radius;
+                    var nx = dx / dist;
+                    var ny = dy / dist;
+
+                    Sleeping.set(body, false);
+
+                    var pushStrength = INTERACTION_FORCE * t * t * (pointer.down ? 1.8 : 1.15);
+                    var dragStrength = DRAG_FORCE * t * (pointer.down ? 1.55 : 1.05);
+
+                    Body.applyForce(body, body.position, {
+                        x: nx * pushStrength + pointer.vx * dragStrength,
+                        y: ny * pushStrength + pointer.vy * dragStrength
+                    });
+
+                    Body.setAngularVelocity(
+                        body,
+                        body.angularVelocity + (pointer.vx * 0.0018 + pointer.vy * 0.0012) * ANGULAR_KICK * (pointer.down ? 1.7 : 1.1)
+                    );
+
+                    if (moveMag > 1.5) {
+                        Body.setVelocity(body, {
+                            x: body.velocity.x + pointer.vx * 0.016 * t,
+                            y: body.velocity.y + pointer.vy * 0.016 * t
+                        });
+                    }
+                }
+            }
+
+            Events.on(engine, 'beforeUpdate', function () {
+                applyPointerForce();
+            });
+
+            Events.on(render, 'afterRender', function () {
+                var ctx = render.context;
+                ctx.save();
+                for (var i = 0; i < wordBodies.length; i++) {
+                    var body = wordBodies[i];
+                    if (!body.wordLabel) continue;
+                    ctx.save();
+                    ctx.translate(body.position.x, body.position.y);
+                    ctx.rotate(body.angle);
+                    ctx.fillStyle = body.wordColor;
+                    ctx.font = '700 ' + body.wordFontSize + 'px Helvetica Neue, Arial, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(body.wordLabel, 0, 0);
+                    ctx.restore();
+                }
+                ctx.restore();
+            });
+
+            function clearWordBodies() {
+                if (wordBodies.length) {
+                    World.remove(engine.world, wordBodies);
+                    wordBodies = [];
+                }
+            }
+
+            function resetScene() {
+                var heroRect = hero.getBoundingClientRect();
+                W = Math.round(heroRect.width || hero.clientWidth || window.innerWidth);
+                H = Math.round(heroRect.height || hero.clientHeight || window.innerHeight);
+                render.canvas.width = W;
+                render.canvas.height = H;
+                render.canvas.style.width = W + 'px';
+                render.canvas.style.height = H + 'px';
+                render.options.width = W;
+                render.options.height = H;
+                Matter.Render.setPixelRatio(render, Math.min(window.devicePixelRatio || 1, 2));
+                render.bounds.max.x = W;
+                render.bounds.max.y = H;
+
+                clearWordBodies();
+                availableWords = WORDS.slice();
+                spawnStopped = false;
+                pointer.active = false;
+                pointer.down = false;
+                pointer.vx = 0;
+                pointer.vy = 0;
+
+                if (spawnTimer) {
+                    clearInterval(spawnTimer);
+                    spawnTimer = null;
+                }
+                if (finishCheckTimer) {
+                    clearInterval(finishCheckTimer);
+                    finishCheckTimer = null;
+                }
+                if (interactionTimer) {
+                    clearTimeout(interactionTimer);
+                    interactionTimer = null;
+                }
+
+                makeBoundaries();
+                createHeroWords();
+                KEYWORDS.forEach(removeWordFromPool);
+
+                var remainingInitial = Math.max(0, INITIAL_SPAWN - KEYWORDS.length);
+                for (var i = 0; i < remainingInitial; i++) {
+                    var spreadX = remainingInitial > 0 ? ((i + 0.5) / remainingInitial) * W + rand(-W * 0.04, W * 0.04) : W / 2;
+                    createWordBody(clamp(spreadX, 16, W - 16), rand(-640, -140), true);
+                }
+
+                startSpawnLoop();
+                startFinishCheck();
+                scheduleInteractionEnable();
+            }
+
+            function updatePointerFromEvent(e) {
+                var rect = canvas.getBoundingClientRect();
+                var nx = e.clientX - rect.left;
+                var ny = e.clientY - rect.top;
+                pointer.vx = nx - pointer.x;
+                pointer.vy = ny - pointer.y;
+                pointer.px = pointer.x;
+                pointer.py = pointer.y;
+                pointer.x = nx;
+                pointer.y = ny;
+                pointer.active = true;
+            }
+
+            replayBtn.addEventListener('click', function () {
+                resetScene();
+            });
+
+            canvas.addEventListener('click', function (e) {
+                burst(e.clientX - canvas.getBoundingClientRect().left);
+            });
+
+            canvas.addEventListener('pointermove', function (e) {
+                updatePointerFromEvent(e);
+            });
+
+            canvas.addEventListener('pointerdown', function (e) {
+                updatePointerFromEvent(e);
+                pointer.down = true;
+            });
+
+            canvas.addEventListener('pointerup', function () {
+                pointer.down = false;
+            });
+
+            canvas.addEventListener('pointerleave', function () {
+                pointer.active = false;
+                pointer.down = false;
+                pointer.vx = 0;
+                pointer.vy = 0;
+            });
+
+            window.addEventListener('resize', function () {
+                resetScene();
+            });
+
+            makeBoundaries();
+            resetScene();
+        }());
+    </script>
+</body>
+</html>
